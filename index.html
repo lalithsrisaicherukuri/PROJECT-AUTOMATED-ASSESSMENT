@@ -1,147 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Profiles</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            background-image: url('studybg.avif');
-            background-size: cover; /* Cover the entire body */
-            background-position: center center; /* Center the image both horizontally and vertically */
-            background-repeat: no-repeat; /* Do not repeat the image */
-            height: 100vh; /* Ensure body covers the entire viewport height */
-            margin: 0; /* Remove default body margin */
-        }
-
-        .studentprofile {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        td, th {
-            padding: 12px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #45a049;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image: url('studybg.avif');
+    background-size: cover; /* Cover the entire body */
+    background-position: center center; /* Center the image both horizontally and vertically */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    height: 100vh; /* Ensure body covers the entire viewport height */
+    margin: 0; /* Remove default body margin */
+    }
+    .login-container {
+        background-color: #e9e175;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+    }
+    .login-container h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .login-container input[type="submit"] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .login-container input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
 </head>
 <body>
-    
-<div class="studentprofile">
-    <h1>Student Profiles</h1>
-    <button id="add">Add</button>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Roll No</th>
-                <th>Level</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Lalith</td>
-                <td>49</td>
-                <td>5</td>
-                <td><button class="btn">Test</button></td>
-            </tr>
 
-            <tr>
-                <td>Ravi</td>
-                <td>49</td>
-                <td>8</td>
-                <td><button class="btn">Test</button></td>
-            </tr>
-
-            <tr>
-                <td>Viraj</td>
-                <td>59</td>
-                <td>8</td>
-                <td><button class="btn">Test</button></td>
-            </tr>
-
-            <tr>
-                <td>Gopi</td>
-                <td>54</td>
-                <td>8</td>
-                <td><button class="btn">Test</button></td>
-            </tr>
-
-            <!-- Hidden row template for adding new rows -->
-            <tr id="newRowTemplate" style="display: none;">
-                <td contenteditable="true"></td>
-                <td contenteditable="true"></td>
-                <td contenteditable="true"></td>
-                <td><button class="btn">Test</button></td>
-                
-            </tr>
-        </tbody>
-    </table>
+<div class="login-container">
+    <h2>Login</h2>
+    <form action='index.html' >
+        <input type="text" id="username" name="username" placeholder="Username" required><br>
+        <input type="password" id="password" name="password" placeholder="Password" required><br>
+        <input type="submit" value="Login">
+    </form>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const addButton = document.getElementById('add');
-        const tbody = document.querySelector('tbody');
-        const newRowTemplate = document.getElementById('newRowTemplate');
 
-        addButton.addEventListener('click', function() {
-            // Clone the new row template and make it visible
-            const newRow = newRowTemplate.cloneNode(true);
-            newRow.style.display = 'table-row';
-            tbody.appendChild(newRow);
-        });
-
-        // Event listener for existing buttons (if needed)
-        const buttons = document.querySelectorAll('.btn');
-        buttons.forEach(button => {
-            button.addEventListener('click', function() {
-                window.location.href = 'assessment.html';
-            });
-        });
-    });
 </script>
 
 </body>
