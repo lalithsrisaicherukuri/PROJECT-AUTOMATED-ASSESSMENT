@@ -77,45 +77,41 @@
                 <th>Name</th>
                 <th>Roll No</th>
                 <th>Level</th>
-                <th>Action</th>
+                <th>Action</th> <!-- Added new header for the button -->
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>Lalith</td>
                 <td>49</td>
-                <td>5</td>
+                <td>4</td>
                 <td><button class="btn">Test</button></td>
             </tr>
-
             <tr>
                 <td>Ravi</td>
-                <td>49</td>
-                <td>8</td>
+                <td>48</td>
+                <td>4</td>
                 <td><button class="btn">Test</button></td>
             </tr>
-
             <tr>
                 <td>Viraj</td>
                 <td>59</td>
-                <td>8</td>
+                <td>3</td>
                 <td><button class="btn">Test</button></td>
             </tr>
-
             <tr>
                 <td>Gopi</td>
                 <td>54</td>
-                <td>8</td>
+                <td>5</td>
                 <td><button class="btn">Test</button></td>
             </tr>
-
-            <!-- Hidden row template for adding new rows -->
+            
+            <!-- Template row for adding new students -->
             <tr id="newRowTemplate" style="display: none;">
-                <td contenteditable="true"></td>
-                <td contenteditable="true"></td>
-                <td contenteditable="true"></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td><button class="btn">Test</button></td>
-                
             </tr>
         </tbody>
     </table>
@@ -130,8 +126,30 @@
         addButton.addEventListener('click', function() {
             // Clone the new row template and make it visible
             const newRow = newRowTemplate.cloneNode(true);
+            newRow.removeAttribute('id'); // Remove the id attribute to avoid duplicate ids
             newRow.style.display = 'table-row';
             tbody.appendChild(newRow);
+
+            // Reset cloned row content to make it editable
+            const cells = newRow.querySelectorAll('td');
+            cells.forEach(cell => {
+                cell.textContent = ''; // Clear existing content
+                cell.setAttribute('contenteditable', 'true'); // Allow editing
+            });
+
+            // Create a button in the last cell for actions
+            const actionCell = cells[3]; // Fourth cell (index 3)
+            const actionButton = document.createElement('button');
+            actionButton.className = 'btn';
+            actionButton.textContent = 'Test';
+            actionButton.addEventListener('click', function() {
+                window.location.href = 'assessment.html';
+            });
+            actionCell.textContent = ''; // Clear existing content
+            actionCell.appendChild(actionButton); // Append the button to the cell
+
+            // Focus on the first cell for convenience
+            cells[0].focus();
         });
 
         // Event listener for existing buttons (if needed)
